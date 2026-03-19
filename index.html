@@ -1,28 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WeatherGuru</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Weather App</h1>
+<!-- NAVBAR -->
+<nav class="navbar">
+<h2>🌦 WeatherGuru</h2>
+<div id="clock"></div>
+</nav>
 
-        <div class="search-box">
-            <input type="text" id="cityInput" placeholder="Enter city name">
-            <button onclick="getWeather()">Search</button>
-        </div>
+<!-- MAIN -->
+<div class="container">
 
-        <div class="weather-box" id="weatherBox">
-            <h2 id="cityName"></h2>
-            <p id="temperature"></p>
-            <p id="description"></p>
-            <p id="humidity"></p>
-            <p id="wind"></p>
-        </div>
-    </div>
+<div class="card">
 
+<input type="text" id="cityInput" placeholder="Enter city">
+<button onclick="searchCity()">Search</button>
+
+<div id="weatherSection" class="hidden">
+
+<h2 id="location"></h2>
+
+<img id="icon"/>
+
+<p><i class="fa-solid fa-temperature-high"></i> <span id="temp"></span></p>
+<p><i class="fa-solid fa-cloud"></i> <span id="desc"></span></p>
+<p><i class="fa-solid fa-droplet"></i> <span id="humidity"></span></p>
+<p><i class="fa-solid fa-wind"></i> <span id="wind"></span></p>
+
+<h3>7 Day Forecast</h3>
+<div id="forecast"></div>
+
+</div>
+
+<button onclick="openMap()">Open Map</button>
+
+</div>
+
+</div>
+
+<!-- MAP -->
+<div id="mapModal">
+
+<button class="close-btn" onclick="closeMap()">❌</button>
+
+<div class="map-wrapper">
+
+<!-- SIDEBAR WITH SEARCH -->
+<div class="sidebar">
+
+<h3>Search Location</h3>
+<input type="text" id="mapSearch" placeholder="Enter city">
+<button onclick="searchMap()">Search</button>
+
+<hr>
+
+<h3 id="mapLocation"></h3>
+<img id="mapIcon"/>
+
+<p><i class="fa-solid fa-temperature-high"></i> <span id="mapTemp"></span></p>
+<p><i class="fa-solid fa-droplet"></i> <span id="mapHumidity"></span></p>
+<p><i class="fa-solid fa-wind"></i> <span id="mapWind"></span></p>
+
+</div>
+
+<div id="map"></div>
+
+</div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
