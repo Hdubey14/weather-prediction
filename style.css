@@ -44,6 +44,124 @@ z-index:1000;
     color: white;
     width: 110px;
 }
+
+/* FIX OVERLAP */
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:50vh;
+padding-top:100px; /* IMPORTANT FIX */
+}
+
+.navbar h2{
+color:white;
+}
+/* CARD */
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+padding:25px;
+border-radius:15px;
+text-align:center;
+width:100%;
+}
+
+/* INPUT */
+input{
+padding:10px;
+border-radius:8px;
+border:none;
+width:100%;
+margin-top:5px;
+}
+
+/* BUTTON */
+button{
+padding:10px;
+border:none;
+border-radius:8px;
+background:#2563eb;
+color:white;
+cursor:pointer;
+margin-top:10px;
+}
+
+/* HIDE */
+.hidden{
+display:none;
+}
+
+/* ICON */
+#icon{
+width:100%;
+}
+
+/* FORECAST */
+#forecast{
+display:flex;
+justify-content:space-between;
+gap:8px;
+margin-top:10px;
+}
+
+.card-item{
+background:rgba(255,255,255,0.2);
+padding:8px;
+border-radius:10px;
+width:100%;
+}
+
+/* MAP */
+#mapModal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+z-index:2000;
+}
+
+.map-wrapper{
+display:flex;
+height:100%;
+padding:20px;
+}
+
+/* SIDEBAR */
+.sidebar{
+width:100%;
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+}
+
+.sidebar input{
+width:90%;
+}
+
+/* MAP */
+#map{
+flex:1;
+margin-left:15px;
+border-radius:10px;
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+position:absolute;
+top:15px;
+right:20px;
+background:red;
+padding:10px;
+border-radius:50%;
+z-index:3000;
+cursor:pointer;
+}
+
+  
 }
 
 /* FIX OVERLAP */
