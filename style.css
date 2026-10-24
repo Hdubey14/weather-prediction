@@ -35,6 +35,7 @@ z-index:1000;
 #clock{
 font-size:16px;
 padding-right: 70px;
+  color:white;
 }
 
 /* FIX OVERLAP */
