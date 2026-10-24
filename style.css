@@ -33,9 +33,10 @@ z-index:1000;
 }
 
 #clock{
-font-size:16px;
-padding-right: 70px;
-  color:white;
+  font-size: 15px;
+    padding-right: 61px;
+    color: white;
+    width: 110px;
 }
 
 /* FIX OVERLAP */
