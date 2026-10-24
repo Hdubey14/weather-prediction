@@ -1,4 +1,4 @@
-```css
+
 /* =========================================
    1. GLOBAL RESET
 ========================================= */
@@ -608,4 +608,74 @@ button:focus-visible {
     animation: none !important;
   }
 }
-```
+
+/* FINAL CLOCK FIX */
+
+.navbar {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 15px;
+  gap: 8px;
+  overflow: visible;
+}
+
+.navbar h2 {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+#clock {
+  display: block;
+  position: relative;
+  flex: 0 0 auto;
+
+  width: auto;
+  max-width: none;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: right;
+
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .navbar h2 {
+    font-size: 16px;
+  }
+
+  #clock {
+    flex: 0 1 48%;
+    width: 48%;
+    max-width: 48%;
+    font-size: 12px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 350px) {
+  .navbar h2 {
+    font-size: 14px;
+  }
+
+  #clock {
+    flex-basis: 50%;
+    width: 50%;
+    max-width: 50%;
+    font-size: 11px;
+  }
+}
