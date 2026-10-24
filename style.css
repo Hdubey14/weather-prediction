@@ -46,6 +46,9 @@ min-height:50vh;
 padding-top:100px; /* IMPORTANT FIX */
 }
 
+.navbar h2{
+color:white;
+}
 /* CARD */
 .card{
 background:rgba(255,255,255,0.15);
