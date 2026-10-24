@@ -679,3 +679,64 @@ button:focus-visible {
     font-size: 11px;
   }
 }
+
+/* CLOCK - DESKTOP + MOBILE FINAL OVERRIDE */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 65px;
+  overflow: visible;
+}
+
+#clock {
+  display: block !important;
+  position: static !important;
+
+  flex: 0 1 auto !important;
+  width: auto !important;
+  min-width: max-content !important;
+  max-width: 100% !important;
+
+  height: auto !important;
+  margin: 0 !important;
+  padding: 5px 0 !important;
+
+  color: #ffffff !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  text-align: right !important;
+
+  white-space: normal !important;
+  overflow: visible !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .navbar h2 {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 16px;
+  }
+
+  #clock {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    max-width: 55% !important;
+    font-size: 12px !important;
+    text-align: right !important;
+    overflow-wrap: anywhere !important;
+  }
+}
