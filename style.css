@@ -1,281 +1,442 @@
-body{
-margin:0;
-font-family:Segoe UI;
-background:url('bg.jpg') no-repeat center center/cover;
-min-height:100%;
-color:rgb(5, 5, 5);
+```css
+/* ==============================
+   GLOBAL STYLES
+============================== */
+
+* {
+  box-sizing: border-box;
 }
 
-/* OVERLAY */
-body::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.4);
-z-index:-1;
+html {
+  min-height: 100%;
 }
 
-/* NAVBAR */
-.navbar{
-width:100%;
-position:fixed;
-top:0;
-left:0;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-background:rgba(0,0,0,0.7);
-z-index:1000;
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: url("bg.jpg") no-repeat center center / cover;
+  background-attachment: fixed;
+  color: #050505;
+  position: relative;
+  isolation: isolate;
 }
 
-#clock{
+/* BACKGROUND OVERLAY */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ==============================
+   NAVBAR
+============================== */
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 30px;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.navbar h2 {
+  color: #fff;
+  margin: 0;
+  font-size: 24px;
+}
+
+/* CLOCK */
+
+#clock {
+  color: #fff;
   font-size: 15px;
-    padding-right: 61px;
-    color: white;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+/* ==============================
+   MAIN CONTAINER
+============================== */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 110px 20px 30px;
+}
+
+/* ==============================
+   WEATHER / CONTENT CARD
+============================== */
+
+.card {
+  width: 100%;
+  max-width: 500px;
+  min-width: 0;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* ==============================
+   INPUT FIELDS
+============================== */
+
+input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 12px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font: inherit;
+}
+
+input:focus {
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5);
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+
+button {
+  padding: 10px 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+/* ==============================
+   HIDE ELEMENTS
+============================== */
+
+.hidden {
+  display: none !important;
+}
+
+/* ==============================
+   WEATHER ICON
+============================== */
+
+#icon {
+  width: 80px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ==============================
+   FORECAST
+============================== */
+
+#forecast {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.card-item {
+  flex: 1 1 65px;
+  min-width: 0;
+  padding: 10px 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow-wrap: anywhere;
+}
+
+/* ==============================
+   MAP MODAL
+============================== */
+
+#mapModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  background: #000;
+  z-index: 2000;
+}
+
+/* Add a class named "active" using JavaScript
+   if you want to open the modal this way. */
+
+#mapModal.active {
+  display: block;
+}
+
+/* MAP LAYOUT */
+
+.map-wrapper {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* ==============================
+   MAP SIDEBAR
+============================== */
+
+.sidebar {
+  flex: 0 0 260px;
+  min-width: 0;
+  padding: 15px;
+  border-radius: 10px;
+  background: #1e293b;
+  color: #fff;
+  overflow-y: auto;
+}
+
+.sidebar input {
+  width: 100%;
+}
+
+/* ==============================
+   MAP AREA
+============================== */
+
+#map {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  margin-left: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* ==============================
+   CLOSE BUTTON
+============================== */
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 3000;
+  padding: 10px 14px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #fff;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #b91c1c;
+}
+
+/* ==============================
+   TABLETS
+============================== */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 18px;
+    gap: 10px;
   }
-@media(max-width:400px){
-#clock{
-  font-size: 15px;
-    padding-right: 61px;
-    color: white;
-    width: 110px;
+
+  .navbar h2 {
+    font-size: 21px;
+  }
+
+  #clock {
+    font-size: 13px;
+    padding-right: 0;
+    white-space: normal;
+    text-align: right;
+  }
+
+  .container {
+    padding: 100px 16px 25px;
+  }
+
+  .card {
+    max-width: 460px;
+    padding: 22px;
+  }
+
+  .map-wrapper {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .sidebar {
+    flex-basis: 220px;
+    padding: 12px;
+  }
 }
 
-/* FIX OVERLAP */
-.container{
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:50vh;
-padding-top:100px; /* IMPORTANT FIX */
+/* ==============================
+   MOBILE PHONES
+============================== */
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .navbar h2 {
+    font-size: 18px;
+  }
+
+  #clock {
+    max-width: 125px;
+    font-size: 12px;
+  }
+
+  .container {
+    min-height: 100vh;
+    padding: 90px 12px 20px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 18px 14px;
+    border-radius: 12px;
+  }
+
+  input {
+    padding: 11px;
+  }
+
+  button {
+    max-width: 100%;
+  }
+
+  #icon {
+    width: 70px;
+  }
+
+  #forecast {
+    gap: 6px;
+  }
+
+  .card-item {
+    flex: 1 1 60px;
+    padding: 8px 4px;
+    font-size: 13px;
+  }
+
+  .map-wrapper {
+    flex-direction: column;
+    padding: 60px 10px 10px;
+    gap: 10px;
+  }
+
+  .sidebar {
+    flex: 0 0 auto;
+    width: 100%;
+    max-height: 35%;
+    padding: 12px;
+  }
+
+  #map {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .close-btn {
+    top: 10px;
+    right: 12px;
+    padding: 8px 12px;
+  }
 }
 
-.navbar h2{
-color:white;
-}
-/* CARD */
-.card{
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(12px);
-padding:25px;
-border-radius:15px;
-text-align:center;
-width:100%;
+/* ==============================
+   VERY SMALL PHONES
+============================== */
+
+@media (max-width: 350px) {
+  .navbar h2 {
+    font-size: 16px;
+  }
+
+  #clock {
+    max-width: 105px;
+    font-size: 11px;
+  }
+
+  .card {
+    padding: 15px 10px;
+  }
+
+  #forecast {
+    gap: 5px;
+  }
+
+  .card-item {
+    flex-basis: 55px;
+    font-size: 12px;
+  }
 }
 
-/* INPUT */
-input{
-padding:10px;
-border-radius:8px;
-border:none;
-width:100%;
-margin-top:5px;
+/* ==============================
+   LANDSCAPE MOBILE MAP
+============================== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .map-wrapper {
+    flex-direction: row;
+    padding: 15px;
+  }
+
+  .sidebar {
+    flex: 0 0 200px;
+    width: auto;
+    max-height: none;
+  }
 }
 
-/* BUTTON */
-button{
-padding:10px;
-border:none;
-border-radius:8px;
-background:#2563eb;
-color:white;
-cursor:pointer;
-margin-top:10px;
-}
+/* REDUCE MOTION WHEN REQUESTED */
 
-/* HIDE */
-.hidden{
-display:none;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
 }
-
-/* ICON */
-#icon{
-width:100%;
-}
-
-/* FORECAST */
-#forecast{
-display:flex;
-justify-content:space-between;
-gap:8px;
-margin-top:10px;
-}
-
-.card-item{
-background:rgba(255,255,255,0.2);
-padding:8px;
-border-radius:10px;
-width:100%;
-}
-
-/* MAP */
-#mapModal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-z-index:2000;
-}
-
-.map-wrapper{
-display:flex;
-height:100%;
-padding:20px;
-}
-
-/* SIDEBAR */
-.sidebar{
-width:100%;
-background:#1e293b;
-padding:15px;
-border-radius:10px;
-}
-
-.sidebar input{
-width:90%;
-}
-
-/* MAP */
-#map{
-flex:1;
-margin-left:15px;
-border-radius:10px;
-}
-
-/* CLOSE BUTTON */
-.close-btn{
-position:absolute;
-top:15px;
-right:20px;
-background:red;
-padding:10px;
-border-radius:50%;
-z-index:3000;
-cursor:pointer;
-}
-
-  
-}
-
-/* FIX OVERLAP */
-.container{
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:50vh;
-padding-top:100px; /* IMPORTANT FIX */
-}
-
-.navbar h2{
-color:white;
-}
-/* CARD */
-.card{
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(12px);
-padding:25px;
-border-radius:15px;
-text-align:center;
-width:500px;
-}
-
-/* INPUT */
-input{
-padding:10px;
-border-radius:8px;
-border:none;
-width:70%;
-margin-top:5px;
-}
-
-/* BUTTON */
-button{
-padding:10px;
-border:none;
-border-radius:8px;
-background:#2563eb;
-color:white;
-cursor:pointer;
-margin-top:10px;
-}
-
-/* HIDE */
-.hidden{
-display:none;
-}
-
-/* ICON */
-#icon{
-width:80px;
-}
-
-/* FORECAST */
-#forecast{
-display:flex;
-justify-content:space-between;
-gap:8px;
-margin-top:10px;
-}
-
-.card-item{
-background:rgba(255,255,255,0.2);
-padding:8px;
-border-radius:10px;
-width:50px;
-}
-
-/* MAP */
-#mapModal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-z-index:2000;
-}
-
-.map-wrapper{
-display:flex;
-height:100%;
-padding:20px;
-}
-
-/* SIDEBAR */
-.sidebar{
-width:260px;
-background:#1e293b;
-padding:15px;
-border-radius:10px;
-}
-
-.sidebar input{
-width:90%;
-}
-
-/* MAP */
-#map{
-flex:1;
-margin-left:15px;
-border-radius:10px;
-}
-
-/* CLOSE BUTTON */
-.close-btn{
-position:absolute;
-top:15px;
-right:20px;
-background:red;
-padding:10px;
-border-radius:50%;
-z-index:3000;
-cursor:pointer;
-}
+```
